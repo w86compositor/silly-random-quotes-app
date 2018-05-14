@@ -5,8 +5,9 @@ $(document).ready(() => {
 
     let getRandomQuote = () => {
         jQuery.getJSON(`${endpoint}`, (data, status) => {
-            // console.log(data);
+            console.log(status);
             $("#quote").html(`<i class="fas fa-quote-left"></i> ${data.quoteText} <i class="fas fa-quote-right"></i>`);
+
             //Checking if the quote does not have an author
             if (data.quoteAuthor !== "") {
                 $("#quote-author").html(`${data.quoteAuthor} at <a href="${data.quoteLink}" target="_blank" class="card-link">forismatic</a>`);
@@ -14,8 +15,8 @@ $(document).ready(() => {
                 $("#quote-author").html(`Reference at: <a href="${data.quoteLink}" target="_blank" class="card-link">forismatic</a>`);
             }
 
-        }).fail((textStatus, error) => {
-            $("#quote").html(`Ah snap...there's a technical error`);
+        }).fail((error) => {
+            $("#quote").html(`Ah snap...there's a technical error: ${error}`);
             $("#quote-author").html("");
         })
     };
