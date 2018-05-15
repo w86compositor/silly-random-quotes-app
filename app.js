@@ -16,7 +16,7 @@ $(document).ready(() => {
 			}
 			//Create a tweet function
 			function tweetQuote() {
-				 window.open(`https://twitter.com/intent/tweet?text=${data.quoteText}`);
+				window.open(`https://twitter.com/intent/tweet?text=${data.quoteText}`);
 			}
 			$("#tweet-icon").on("click", tweetQuote);
 		}).fail((error) => {
